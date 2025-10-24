@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Summary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg">
+<div class="navbar">
+  <a href="{{ url_for('institution') }}">Institution</a>
+  <a href="{{ url_for('waste_entry') }}">Waste Entry</a>
+  <a href="{{ url_for('summary') }}">Summary</a>
+  <a href="{{ url_for('leaderboard') }}">leaderboard</a>
+  <a href="{{ url_for('recommendations') }}">Recommendations</a>
+  <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+  <div class="card">
+    <h2>Waste Summary</h2>
+    {% if no_data %}
+      <p>No data yet. Please add some records.</p>
+    {% else %}
+      <canvas id="wasteChart"></canvas>
+      <script>
+        const labels = {{ labels|safe }};
+        const series = {{ series|safe }};
+        const datasets = series.map(s => ({
+          label: s.label, data: s.data,
+          borderColor: s.borderColor,
+          fill: false, tension: s.tension
+        }));
+        new Chart(document.getElementById('wasteChart'), {
+          type: 'line',
+          data: { labels: labels, datasets: datasets }
+        });
+      </script>
+    {% endif %}
+  </div>
+</body>
+</html>

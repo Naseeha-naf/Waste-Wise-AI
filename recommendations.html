@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommendations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+<div class="navbar">
+  <a href="{{ url_for('institution') }}">Institution</a>
+  <a href="{{ url_for('waste_entry') }}">Waste Entry</a>
+  <a href="{{ url_for('summary') }}">Summary</a>
+   <a href="{{ url_for('summary') }}">Leaderboard</a>
+  <a href="{{ url_for('recommendations') }}">Recommendations</a>
+  <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+  <div class="card">
+    <h2>Recommendations for {{ inst_name }}</h2>
+    <ul>
+      {% for r in recs %}
+        <li>{{ r }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>

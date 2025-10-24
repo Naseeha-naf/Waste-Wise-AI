@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaderboard — Colleges</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+
+<!-- Navbar -->
+<div class="navbar">
+  <a href="{{ url_for('institution') }}">Institution</a>
+  <a href="{{ url_for('waste_entry') }}">Waste Entry</a>
+  <a href="{{ url_for('summary') }}">Summary</a>
+  <a href="{{ url_for('recommendations') }}">Recommendations</a>
+  <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+  <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+
+<div class="card">
+  <h2>Leaderboard — Colleges ✨</h2>
+  {% if results %}
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th> Rank</th>
+        <th>Colleges</th>
+        <th>Avg Plastic (kg)</th>
+        <th>Avg Organic (kg)</th>
+        <th>Avg Eco Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in results %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row['college_name'] }}</td>
+        <td>{{ row['avg_plastic'] }}</td>
+        <td>{{ row['avg_organic'] }}</td>
+        <td>{{ row['avg_eco'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>No data available. Please add some waste records first.</p>
+  {% endif %}
+</div>
+
+</body>
+</html>

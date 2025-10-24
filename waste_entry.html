@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waste Entry</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+<div class="navbar">
+  <a href="{{ url_for('institution') }}">Institution</a>
+  <a href="{{ url_for('waste_entry') }}">Waste Entry</a>
+  <a href="{{ url_for('summary') }}">Summary</a>
+  <a href="{{ url_for('summary') }}">Leaderboard</a>
+  <a href="{{ url_for('recommendations') }}">Recommendations</a>
+  <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+  <div class="card">
+    <h2>Waste Entry - {{ inst_name }}</h2>
+    <form method="post">
+      <label>Date:</label>
+      <input type="date" name="record_date" required>
+      <label>Location:</label>
+      <select name="location_id" required>
+        {% for loc in locations %}
+          <option value="{{ loc['location_id'] }}">{{ loc['name'] }}</option>
+        {% endfor %}
+      </select>
+      <label>Plastic Waste (kg)</label>
+      <input type="number" name="plastic_kg" step="0.01" required>
+      <label>Organic Waste (kg)</label>
+      <input type="number" name="organic_kg" step="0.01" required>
+      <button type="submit">Submit</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash">
+          {% for cat,msg in messages %}
+            <li class="{{ cat }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

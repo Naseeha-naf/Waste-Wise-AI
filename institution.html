@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Institution</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="navbar">
+    <a href="{{ url_for('institution') }}">Institution</a>
+    <a href="{{ url_for('waste_entry') }}">Waste Entry</a>
+    <a href="{{ url_for('summary') }}">Summary</a>
+     <a href="{{ url_for('summary') }}">Leaderboard</a>
+    <a href="{{ url_for('recommendations') }}">Recommendations</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+
+  <div class="card">
+    <h2>Enter Institution</h2>
+    <form method="post">
+      <!-- Institution ID input added -->
+      <input type="number" name="inst_id" placeholder="Enter Institution ID" required>
+
+      <input type="text" name="inst_name" placeholder="Enter Institution Name" required>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</body>
+</html>
