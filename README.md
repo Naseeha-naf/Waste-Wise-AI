@@ -1,4 +1,4 @@
-# Smart Waste Exchange & E-Waste Management System
+# Waste-Wise AI
 
 This project is designed to efficiently manage canteen and e-waste data within an institution.  
 It enables waste tracking, data analysis, and recommendation generation through a simple and user-friendly web interface.
@@ -13,7 +13,7 @@ It enables waste tracking, data analysis, and recommendation generation through 
 
 
 ## 🛠️ Tech Stack
-- **Frontend:** HTML5, CSS3, JavaScript  
+- **Frontend:** HTML,CSS
 - **Backend:** Python (Flask Framework)  
 - **Database:** SQLite  
 - **Tools:** Visual Studio Code, GitHub  
